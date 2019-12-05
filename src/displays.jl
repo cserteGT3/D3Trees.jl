@@ -47,3 +47,10 @@ function inbrowser(t::D3Tree, command::Cmd)
     end
     run(`$command $fname`)
 end
+
+function tofile(t::D3Tree, fname)
+	open(fname, "w") do f
+        show(f, MIME("text/html"), t)
+    end
+	nothing
+end

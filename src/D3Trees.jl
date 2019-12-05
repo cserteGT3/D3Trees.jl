@@ -14,7 +14,8 @@ export
 
     blink,
     inchrome,
-    inbrowser
+    inbrowser,
+	tofile
 
 struct D3Tree
     children::Vector{Vector{Int}}
