@@ -23,6 +23,8 @@ struct D3Tree
     style::Vector{String}
     link_style::Vector{String}
     title::String
+	fontsize::Number
+	noder::Number
     options::Dict{Symbol, Any}
 end
 
@@ -88,6 +90,8 @@ Construct a tree to be displayed using D3 in a browser or ipython notebook, spec
 - `init_expand::Integer` - levels to expand initially.
 - `init_duration::Number` - duration of the initial animation in ms.
 - `svg_height::Number` - height of the svg containing the tree in px.
+- `fontsize::Number` - size of text, defaults to 12.
+- `noder::Number` - radius of the nodes, defaults to 10.
 """
 function D3Tree(children::AbstractVector{<:AbstractVector}; kwargs...)
     kwd = Dict(kwargs)
@@ -98,6 +102,8 @@ function D3Tree(children::AbstractVector{<:AbstractVector}; kwargs...)
                   get(kwd, :style, fill("", n)),
                   get(kwd, :link_style, fill("", n)),
                   get(kwd, :title, "Julia D3Tree"),
+				  get(kwd, :fontsize, 12),
+				  get(kwd, :noder, 10),
                   convert(Dict{Symbol, Any}, kwd)
                  )
 end

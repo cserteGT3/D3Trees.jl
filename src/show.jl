@@ -2,6 +2,10 @@ function Base.show(f::IO, m::MIME"text/html", t::D3Tree)
     tree_json = json(t)
     root_id = 1
     css = read(joinpath(dirname(@__FILE__()), "..", "css", "tree_vis.css"), String)
+	
+	css = replace(css, "r: 10;"=>"r: "*string(t.noder)*";")
+	css = replace(css, "font-size: 12px;"=>"font-size: "*string(t.fontsize)*"px;")
+	
     js = read(joinpath(dirname(@__FILE__()), "..", "js", "tree_vis.js"), String)
     div = "treevis$(randstring())"
 
